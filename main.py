@@ -485,13 +485,13 @@ async def account_login(bot: Client, m: Message):
                 prog = await m.reply_text(Show)
                 cc = f'{str(count).zfill(3)}**.** {name1} {res}\n**Batch :-** {raw_text0}'
                 cc1 = f'{str(count).zfill(3)}**.** {name1} {res}.pdf\n**Batch :-** {raw_text0}'
-                                         #await prog.delete (True)
+                    await prog.delete (True)
                 if cmd == "pdf" or "drive" in url:
                                      try:
                                          ka=await helper.download(url,name)
                                          await prog.delete (True)
                                          time.sleep(1)
-                                         # await helper.send_doc(bot,m,cc,ka,cc1,prog,count,name)
+                                         await helper.send_doc(bot,m,cc,ka,cc1,prog,count,name)
                                          reply = await m.reply_text(f"Uploading - `{name}`")
                                          time.sleep(1)
                                          start_time = time.time()
