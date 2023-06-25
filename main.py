@@ -677,7 +677,7 @@ async def account_login(bot: Client, m: Message):
 
 #                 filename = f"{name}.mkv"
                 subprocess.run(
-                    f'ffprobe -i "{filename}" -ss 00:01:00 -vframes 1 "{filename}.jpg"',
+                    f'ffmpeg -i "{filename}" -ss 00:01:00 -vframes 1 "{filename}.jpg"',
                     shell=True)
                 await prog.delete(True)
                 reply = await m.reply_text(f"Uploading - ```{name}```")
