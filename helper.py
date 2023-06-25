@@ -1,3 +1,26 @@
+#  MIT License
+#
+#  Copyright (c) 2019-present Dan <https://github.com/delivrance>
+#
+#  Permission is hereby granted, free of charge, to any person obtaining a copy
+#  of this software and associated documentation files (the "Software"), to deal
+#  in the Software without restriction, including without limitation the rights
+#  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+#  copies of the Software, and to permit persons to whom the Software is
+#  furnished to do so, subject to the following conditions:
+#
+#  The above copyright notice and this permission notice shall be included in all
+#  copies or substantial portions of the Software.
+#
+#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+#  @Edited By Cryptostark 
+
+
 import subprocess
 import datetime
 import asyncio
@@ -7,7 +30,8 @@ import time
 from p_bar import progress_bar
 import aiohttp
 import tgcrypto
-import aiofiles
+import concurrent.futures
+import subprocess
 from pyrogram.types import Message
 from pyrogram import Client, filters
 
@@ -18,7 +42,17 @@ def duration(filename):
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT)
     return float(result.stdout)
-
+    
+def exec(cmd):
+        process = subprocess.run(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        output = process.stdout.decode()
+        print(output)
+        return output
+        #err = process.stdout.decode()
+def pull_run(work, cmds):
+    with concurrent.futures.ThreadPoolExecutor(max_workers=work) as executor:
+        print("Waiting for tasks to complete")
+        fut = executor.map(exec,cmds)
 async def aio(url,name):
     k = f'{name}.pdf'
     async with aiohttp.ClientSession() as session:
@@ -168,7 +202,7 @@ async def send_doc(bot: Client, m: Message,cc,ka,cc1,prog,count,name):
 
 async def send_vid(bot: Client, m: Message,cc,filename,thumb,name,prog):
     
-    subprocess.run(f'ffmpeg -i "{filename}" -ss 00:00:12 -vframes 1 "{filename}.jpg"', shell=True)
+    subprocess.run(f'ffmpeg -i "{filename}" -ss 00:01:00 -vframes 1 "{filename}.jpg"', shell=True)
     await prog.delete (True)
     reply = await m.reply_text(f"**Uploading ...** - `{name}`")
     try:
@@ -187,8 +221,6 @@ async def send_vid(bot: Client, m: Message,cc,filename,thumb,name,prog):
         await m.reply_video(filename,caption=cc, supports_streaming=True,height=720,width=1280,thumb=thumbnail,duration=dur, progress=progress_bar,progress_args=(reply,start_time))
     except Exception:
         await m.reply_document(filename,caption=cc, progress=progress_bar,progress_args=(reply,start_time))
-
-    
     os.remove(filename)
 
     os.remove(f"{filename}.jpg")
