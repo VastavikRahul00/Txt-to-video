@@ -43,16 +43,6 @@ def duration(filename):
         stderr=subprocess.STDOUT)
     return float(result.stdout)
     
-def exec(cmd):
-        process = subprocess.run(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-        output = process.stdout.decode()
-        print(output)
-        return output
-        #err = process.stdout.decode()
-def pull_run(work, cmds):
-    with concurrent.futures.ThreadPoolExecutor(max_workers=work) as executor:
-        print("Waiting for tasks to complete")
-        fut = executor.map(exec,cmds)
 async def aio(url,name):
     k = f'{name}.pdf'
     async with aiohttp.ClientSession() as session:
