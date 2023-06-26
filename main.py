@@ -120,6 +120,30 @@ async def account_login(bot: Client, m: Message):
 
             url = links[i][1]
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").strip()
+            if ".pdf" in url or "pdf" in name1:
+                name = f"{str(count).zfill(3)}) {name1.replace('pdf', '')}.pdf"
+                r = requests.get(url, allow_redirects=True)
+                if r.status_code != 200:
+                    print("Error", name)
+                    continue
+                with open(name, "wb") as f:
+                    f.write(r.content)
+                    print("done: ", name)
+                try:
+                    await bot.send_document(m.chat.id, name, file_name=name, caption=f'{name}')
+                except FloodWait as e:
+                    await asyncio.sleep(e.x)
+                count += 1
+                os.remove(name) if os.path.exists(name) else None
+                continue
+                
+            if "classplus" in url:
+                ytf = None
+                name = name1
+                
+            if "visionias" in url:
+                url = get_va(url)
+                name = name1
 
             if raw_text2 == "144":
 
