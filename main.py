@@ -18,7 +18,6 @@ import glob
 import aiohttp
 import asyncio
 from pyrogram.types import User, Message
-import progressor
 from progressor import progress_for_pyrogram
 import sys
 import re
