@@ -1020,61 +1020,82 @@ async def account_login(bot: Client, m: Message):
                 continue
     except Exception as e:
         await m.reply_text(str(e))
-    await m.reply_text("Done") 
- 
-@bot.on_message(filters.command(["download_json"]))
+    await m.reply_text("Done")
 
-async def download_json_info(bot: Client, message: Message):
-    json_ans = await bot.ask(message.chat.id, "Send json")
+
+@bot.on_message(filters.command(["send_txt"]))
+async def account_login(bot: Client, m: Message):
     editable = await m.reply_text('Send TXT in **NAME : LINK** format to download')
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
-    json_file = f"./downloads/{message.chat.id}/{file_name}"
-    await json_ans.download(json_file)
-    videos_dict = json.load(open(json_file))
-    opt_ques = """\
-    Send options in this format
-    FORMAT|START(OPT)|N1|N2|...(OPT)
-    \n
-    By default start from 1,
-    n1, n2, .. index instead of start to only download those indexes
-    \n
-    e.g. 360 or 480|34 or 720||3|27
-    """
-    opt_ans = await bot.ask(message.chat.id, dedent(opt_ques))
-    opt_ans = opt_ans.text
-    opt_parts = opt_ans.split("|")
-    start = ''
-    req_vids = []
-    try:
-        vid_format, start, *req_vids = opt_parts
-    except:
-        try:
-            vid_format, start = opt_parts
-        except:
-            vid_format = opt_parts[0]
-    videos = []
-    for topic, vids in videos_dict.items():
-        for title, link in vids.items():
-            videos.append((link, vid_format, title, topic))
-    req_videos = []
-    if req_vids:
-        videos_ = [(int(vid), videos[int(vid) -1]) for vid in req_vids]
-        req_videos += videos_
-    elif not start:
-        start = '1'
-    if start:
-        videos_ = videos[int(start) - 1:]
-        req_videos += enumerate(req_videos, int(start))
-    req_videos = sorted(set(req_videos))
-    n = len(req_videos)
-    thumb_ques = "Send custom thumbnail url or N for default or V for video thumbnail."
-    thumbnail = await bot.ask(message.chat.id, thumb_ques)
-    thumbnail = thumbnail.text
-    await message.reply(f"Downloading!!! {n} videos")
-    await download_videos(bot, message, req_videos, thumbnail)
 
+
+    path = f"./downloads/{m.chat.id}"
+
+    try:
+        with open(x, "r") as f:
+            content = f.read()
+        content = content.split("\n")
+        links = []
+        for i in content:
+            links.append(i.split(":", 1))
+        os.remove(x)
+        # print(len(links))
+    except:
+        await m.reply_text("Invalid file input.")
+        os.remove(x)
+        return
+
+    editable = await m.reply_text(
+        f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **0**"
+    )
+    input1: Message = await bot.listen(editable.chat.id)
+    raw_text = input1.text
+
+    try:
+        arg = int(raw_text)
+    except:
+        arg = 0
+
+    editable = await m.reply_text("**Enter Title**")
+    input0: Message = await bot.listen(editable.chat.id)
+    raw_text0 = input0.text
+
+    await m.reply_text("**Enter resolution**")
+    input2: Message = await bot.listen(editable.chat.id)
+    raw_text2 = input2.text
+
+    editable4 = await m.reply_text(
+        "Now send the **Thumb url**\nEg : ```https://telegra.ph/file/d9e24878bd4aba05049a1.jpg```\n\nor Send **no**"
+    )
+    input6 = message = await bot.listen(editable.chat.id)
+    raw_text6 = input6.text
+
+    thumb = input6.text
+    if thumb.startswith("http://") or thumb.startswith("https://"):
+        getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
+        thumb = "thumb.jpg"
+    else:
+        thumb == "no"
+
+    if raw_text == '0':
+        count = 1
+    else:
+        count = int(raw_text)
+
+    try:
+        for i in range(arg, len(links)):
+
+            url = links[i][1]
+            name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").strip()
+
+            if raw_text2 == "144":
+
+                cmd = f'yt-dlp -F "{url}"'
+                k = await helper.run(cmd)
+                out = helper.vid_info(str(k))
+                # print(out)
 
 def is_vimeo(link):
     webpage_cmd = f"curl -s '{link}'"
