@@ -32,11 +32,11 @@ bot = Client("bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, sleep
 with bot:
     BOT = bot.get_me().username.lower()
 
-auth_users = [ int(chat) for chat in os.environ.get("AUTH_USERS").split(",") if chat != '']
-sudo_groups = [ int(chat) for chat in os.environ.get("GROUPS").split(",")  if chat != '']
-sudo_json_groups = [ int(chat) for chat in os.environ.get("JSON_GROUPS").split(",")  if chat != '']
-sudo_users = auth_users
-print(sudo_groups, sudo_json_groups, sudo_users)
+#auth_users = [ int(chat) for chat in os.environ.get("AUTH_USERS").split(",") if chat != '']
+#sudo_groups = [ int(chat) for chat in os.environ.get("GROUPS").split(",")  if chat != '']
+#sudo_json_groups = [ int(chat) for chat in os.environ.get("JSON_GROUPS").split(",")  if chat != '']
+#sudo_users = auth_users
+#print(sudo_groups, sudo_json_groups, sudo_users)
 
 DEF_FORMAT = "360"
 thumb = os.environ.get("THUMB")
