@@ -92,7 +92,7 @@ async def send_video(bot: Client, message: Message, path, caption, filename, thu
         (filters.command("download_json"))
         | filters.regex(f"^/download_json@{BOT}")
     )
-    & (filters.chat(sudo_json_groups) | filters.user(sudo_users))
+ #   & (filters.chat(sudo_json_groups) | filters.user(sudo_users))
 )
 async def download_json_info(bot: Client, message: Message):
     json_ans = await bot.ask(message.chat.id, "Send json")
