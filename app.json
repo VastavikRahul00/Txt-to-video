@@ -1,9 +1,9 @@
 
 {
 
-    "name": "MG",
+    "name": "Unkniwntxt",
 
-    "description": "A Modular telegram bot.",
+    "description": "Download videos from various websites using this telegram bot",
 
     "repository": "https://github.com/Martyy2003/Unkniwntxt",
     "buildpacks":[
