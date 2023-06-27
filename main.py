@@ -38,50 +38,7 @@ with bot:
 #sudo_users = auth_users
 #print(sudo_groups, sudo_json_groups, sudo_users)
 
-DEF_FORMAT = "360"
-thumb = os.environ.get("THUMB")
-#if thumb.startswith("http://") or thumb.startswith("https://"):
-    getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
-    thumb = "thumb.jpg"
-
-file_handler = logging.FileHandler(filename="bot.log", mode="w")
-stdout_handler = logging.StreamHandler(sys.stdout)
-handlers = [file_handler, stdout_handler]
-logging.basicConfig(
-    format="%(name)s - %(levelname)s - %(message)s\n",
-    level=logging.WARNING,
-    handlers=handlers,
 )
-logger = logging.getLogger(__name__)
-
-
-async def query_same_user_filter_func(_, __, query):
-    message = query.message.reply_to_message
-    if message.from_user is None:
-        return True
-    if query.from_user.id != message.from_user.id:
-        await query.answer("❌ Not for you", True)
-        return False
-    else:
-        return True
-
-
-async def query_document_filter_func(_, __, query):
-    msg = query.message.reply_to_message
-    msg = await __.get_messages(msg.chat.id, msg.message_id)
-    if msg.document is not None:
-        return True
-    elif msg.reply_to_message is not None:
-        if msg.reply_to_message.document is not None:
-            return True
-        else:
-            return False
-    else:
-        return False
-
-
-query_same_user = filters.create(query_same_user_filter_func)
-query_document = filters.create(query_document_filter_func)
 
 
 @bot.on_message(filters.command("start"))
