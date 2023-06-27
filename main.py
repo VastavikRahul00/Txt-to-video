@@ -40,7 +40,7 @@ with bot:
 
 DEF_FORMAT = "360"
 thumb = os.environ.get("THUMB")
-if thumb.startswith("http://") or thumb.startswith("https://"):
+#if thumb.startswith("http://") or thumb.startswith("https://"):
     getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
     thumb = "thumb.jpg"
 
