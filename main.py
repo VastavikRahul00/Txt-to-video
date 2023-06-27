@@ -1026,12 +1026,10 @@ async def account_login(bot: Client, m: Message):
 
 async def download_json_info(bot: Client, message: Message):
     json_ans = await bot.ask(message.chat.id, "Send json")
-    try:
-        if json_ans.document.mime_type != "application/json":
-            return
-        file_name = json_ans.document.file_name
-    except:
-        return
+    editable = await m.reply_text('Send TXT in **NAME : LINK** format to download')
+    input: Message = await bot.listen(editable.chat.id)
+    x = await input.download()
+    await input.delete(True)
     json_file = f"./downloads/{message.chat.id}/{file_name}"
     await json_ans.download(json_file)
     videos_dict = json.load(open(json_file))
