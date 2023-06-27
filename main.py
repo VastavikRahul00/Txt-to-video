@@ -306,7 +306,7 @@ def get_videos(req_videos):
         (filters.command("download_link"))
         | filters.regex(f"^/download_link@{BOT}")
     )
-    & (filters.chat(sudo_groups) | filters.user(sudo_users))
+   # & (filters.chat(sudo_groups) | filters.user(sudo_users))
 )
 async def download_link(bot: Client, message: Message):
     user = message.from_user.id if message.from_user is not None else None
