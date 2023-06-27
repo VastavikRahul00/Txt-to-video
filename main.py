@@ -1021,7 +1021,8 @@ async def account_login(bot: Client, m: Message):
     except Exception as e:
         await m.reply_text(str(e))
     await m.reply_text("Done") 
- @bot.on_message(filters.command(["download_json"]))
+ 
+@bot.on_message(filters.command(["download_json"]))
 
 async def download_json_info(bot: Client, message: Message):
     json_ans = await bot.ask(message.chat.id, "Send json")
