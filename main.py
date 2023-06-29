@@ -143,7 +143,7 @@ async def account_login(bot: Client, m: Message):
 
             if "cloudfront" in url:
                 ytf = None
-                name name1
+                name = name1
 
             if "visionias" in url:
                 url = get_va(url)
