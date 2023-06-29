@@ -120,7 +120,7 @@ async def account_login(bot: Client, m: Message):
         for i in range(arg, len(links)):
 
             url = links[i][1]
-            name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").strip()
+            name1 = links[i][0].replace("\t", "").replace(":", ":").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").strip()
             if ".pdf" in url or "pdf" in name1:
                 name = f"{str(count).zfill(3)}) {name1.replace('pdf', '')}.pdf"
                 r = requests.get(url, allow_redirects=True)
