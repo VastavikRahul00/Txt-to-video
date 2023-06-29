@@ -109,9 +109,8 @@ async def account_login(bot: Client, m: Message):
         thumb = "thumb.jpg"
     else:
         thumb == "no"
-    if raw_text == '1':
-        count = 2
-    elif raw_text == '0':
+
+    if raw_text == '0':
         count = 1
     else:
         count = int(raw_text)
@@ -120,7 +119,7 @@ async def account_login(bot: Client, m: Message):
         for i in range(arg, len(links)):
 
             url = links[i][1]
-            name1 = links[i][1].replace("\t", "").replace(":", ":").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").strip()
+            name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").strip()
             if ".pdf" in url or "pdf" in name1:
                 name = f"{str(count).zfill(3)}) {name1.replace('pdf', '')}.pdf"
                 r = requests.get(url, allow_redirects=True)
