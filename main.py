@@ -141,7 +141,7 @@ async def account_login(bot: Client, m: Message):
                 ytf = None
                 name = name1
 
-            if "cloudfront" in url
+            if "cloudfront" in url:
                 ytf = None
                 name name1
 
