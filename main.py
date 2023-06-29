@@ -280,7 +280,9 @@ async def account_login(bot: Client, m: Message):
             if "classplus" in url:
                 ytf = None
                 name = name1
-                
+            if "cloudfront" in url:
+                ytf = None
+                name = name1 
             if "visionias" in url:
                 url = get_va(url)
                 name = name1
