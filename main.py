@@ -109,8 +109,9 @@ async def account_login(bot: Client, m: Message):
         thumb = "thumb.jpg"
     else:
         thumb == "no"
-
     if raw_text == '0':
+        count = 2
+    elif raw_text == '0':
         count = 1
     else:
         count = int(raw_text)
