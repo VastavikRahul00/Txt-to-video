@@ -144,7 +144,9 @@ async def account_login(bot: Client, m: Message):
             if "cloudfront" in url:
                 ytf = None
                 name = name1
-            
+            if "mpd" in url:
+                ytf = None
+                name = name1
             if "cdn.crwill" in url:
                 ytf = None
                 name = name1
