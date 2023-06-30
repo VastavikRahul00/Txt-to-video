@@ -146,7 +146,7 @@ async def account_login(bot: Client, m: Message):
                 name = name1
             
             if "cdn.crwill" in url:
-                url = get_va(url)
+                ytf = True 
                 name = name1
 
             if "visionias" in url:
