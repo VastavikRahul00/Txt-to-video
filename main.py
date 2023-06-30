@@ -54,7 +54,7 @@ async def restart_handler(_, m):
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command(["txt"]))
+@bot.on_message(filters.command(["text"]))
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text('Send TXT in **NAME : LINK** format to download')
     input: Message = await bot.listen(editable.chat.id)
