@@ -36,8 +36,7 @@ bot = Client(
 @bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
 
- editable = await m.reply_text("**Hi Im a text video downloader
- Press**\n**Text** = /txt" )
+ editable = await m.reply_text("**Hi BOSS I'm Alive Send /text**")
 
 
 @bot.on_message(filters.command(["cancel"]))
