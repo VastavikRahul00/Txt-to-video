@@ -145,7 +145,7 @@ async def account_login(bot: Client, m: Message):
                 ytf = None
                 name = name1
             
-            if "crwill" in url:
+            if "cdn.crwill" in url:
                 ytf = None
                 name = name1
 
@@ -326,7 +326,7 @@ async def account_login(bot: Client, m: Message):
             # if ytf == f"'bestvideo[height<={raw_text2}][ext=mp4]+bestaudio[ext=m4a]'" or "acecwply" in url:
             if "acecwply" in url:
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
-            elif "crwill" in url: 	
+            elif "cdn.crwill" in url: 	
                 cmd = f'yt-dlp -f "{ytf}" --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
                 
             elif "vercel" in url:
