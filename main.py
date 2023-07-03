@@ -140,15 +140,13 @@ async def account_login(bot: Client, m: Message):
             if "classplus" in url:
                 ytf = None
                 name = name1
-            if "master" in url:
-                ytf = None
-                name = name1 
+
             if "cloudfront" in url:
                 ytf = None
                 name = name1
 
             if "visionias" in url:
-                ytf = None 
+                url = get_va(url)
                 name = name1
 
             if raw_text2 == "144":
@@ -324,12 +322,7 @@ async def account_login(bot: Client, m: Message):
             # if ytf == f"'bestvideo[height<={raw_text2}][ext=mp4]+bestaudio[ext=m4a]'" or "acecwply" in url:
             if "acecwply" in url:
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
-            elif "master" or "livestream" in url:
-                cmd = f'yt-dlp -f "{ytf}" --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
-            
             elif "vercel" in url:
-                cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
-            elif "visionias" in url:
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
             elif "youtu" in url:
                 cmd = f'yt-dlp -i -f "bestvideo[height<={raw_text2}]+bestaudio" --no-keep-video --remux-video mkv --no-warning "{url}" -o "{name}.%(ext)s"'
@@ -390,7 +383,7 @@ async def account_login(bot: Client, m: Message):
                         await m.reply_document(
                             ka,
                             caption=
-                            f"**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.pdf\n**Batch  »** {raw_text0}"
+                            f"**Name 📛 »** {name1} {res}💔Marty.pdf\n**Batch 🔖 »** {raw_text0}\n**Index 🗂️ »** {str(count).zfill(3)}"
                         )
                         count += 1
                         # time.sleep(1)
@@ -412,7 +405,7 @@ async def account_login(bot: Client, m: Message):
 
             except Exception as e:
                 await m.reply_text(
-                    f"**downloading failed **\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
+                    f"**downloading failed âŒ**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
                 )
                 continue
 
