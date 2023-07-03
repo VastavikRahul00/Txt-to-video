@@ -25,7 +25,7 @@ import io
 
 API_ID = 10577960
 API_HASH = "80fd047285f4e94ca80311928b6bb5da"
-BOT_TOKEN = "5660469500:AAENdcx12_jE6q_ebTJcFIjErAJUMzDIayM"
+BOT_TOKEN = "6144144798:AAHOmtsNN6_g6-eSxWQiJQtZAYXnmzl5cJA"
 bot = Client(
     "bot",
     bot_token=BOT_TOKEN,
@@ -352,8 +352,8 @@ async def account_login(bot: Client, m: Message):
             try:
                 Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
                 prog = await m.reply_text(Show)
-                cc = f"**Name  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch  »** {raw_text0}\n**Index  »** {str(count).zfill(3)}"
-                cc1 = f"**Name  »** ** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.pdf\n**Batch  »** {raw_text0}\n**Index  »** {str(count).zfill(3)}"
+                cc = f"**Vid_id  »** {str(count).zfill(3)}"\n**Name  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch  »** {raw_text0}"
+                cc1 = f"**Vid_id  »** {str(count).zfill(3)}\n**Name  »** ** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.pdf\n**Batch  »** {raw_text0}"
                 #                         await prog.delete (True)
                 #                 if cmd == "pdf" or "drive" in url:
                 #                     try:
@@ -385,7 +385,7 @@ async def account_login(bot: Client, m: Message):
                         await m.reply_document(
                             ka,
                             caption=
-                            f"**Name  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.pdf\n**Batch  »** {raw_text0}\n**Index  »** {str(count).zfill(3)}"
+                            f"**Vid_id  »** {str(count).zfill(3)}\n**Name  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.pdf\n**Batch  »** {raw_text0}"
                         )
                         count += 1
                         # time.sleep(1)
@@ -407,7 +407,7 @@ async def account_login(bot: Client, m: Message):
 
             except Exception as e:
                 await m.reply_text(
-                    f"**downloading failed âŒ**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
+                    f"**downloading failed **\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
                 )
                 continue
 
