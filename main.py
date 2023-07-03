@@ -140,7 +140,9 @@ async def account_login(bot: Client, m: Message):
             if "classplus" in url:
                 ytf = None
                 name = name1
-
+            if "master" in url:
+                ytf = None
+                name = name1 
             if "cloudfront" in url:
                 ytf = None
                 name = name1
