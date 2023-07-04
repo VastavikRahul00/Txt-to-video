@@ -36,7 +36,7 @@ bot = Client(
 @bot.on_message(filters.command(["covid"]))
 async def account_login(bot: Client, m: Message):
 
- editable = await m.reply_text("**Hi i am text downloader**\n**Text** = /text\n**MY FATHER** = 🇨‌ 🇴‌ 🇻 🇮 🇩")
+ editable = await m.reply_text("**Hi i am text downloader**\n**FOR DOWNLOAD VIDEOS PRESS** = /text\n**MY FATHER** = 🇨‌ 🇴‌ 🇻 🇮 🇩")
 
 
 @bot.on_message(filters.command(["cancel"]))
