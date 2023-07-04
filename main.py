@@ -25,7 +25,7 @@ import io
 
 API_ID = 10577960
 API_HASH = "80fd047285f4e94ca80311928b6bb5da"
-BOT_TOKEN = "6069620943:AAEE6KmLv93tT5rYLmP8JETCgOeHpkukckg"
+BOT_TOKEN = "6327769833:AAEcp7chGHwVhBzS959_6aMJE0s2FnzR4aY"
 bot = Client(
     "bot",
     bot_token=BOT_TOKEN,
@@ -36,7 +36,7 @@ bot = Client(
 @bot.on_message(filters.command(["covid"]))
 async def account_login(bot: Client, m: Message):
 
- editable = await m.reply_text("**Hi Press**\n**Text** = /pro_txt\n**Top** = /pro_top\n**Vision** = /pro_vision\n**Jw** = /pro_jw\n**Olive** = /pro_olive\n**Addapdf** = /adda_pdf\n**MY FATHER** = 🇨‌ 🇴‌ 🇻 🇮 🇩")
+ editable = await m.reply_text("**Hi i am text downloader**\n**Text** = /text\n**MY FATHER** = 🇨‌ 🇴‌ 🇻 🇮 🇩")
 
 
 @bot.on_message(filters.command(["cancel"]))
@@ -54,7 +54,7 @@ async def restart_handler(_, m):
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command(["pro_txt"]))
+@bot.on_message(filters.command(["text"]))
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text('Send TXT in **NAME : LINK** format to download')
     input: Message = await bot.listen(editable.chat.id)
