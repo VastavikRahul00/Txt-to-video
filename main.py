@@ -25,7 +25,7 @@ import io
 
 API_ID = 10577960
 API_HASH = "80fd047285f4e94ca80311928b6bb5da"
-BOT_TOKEN = "6327769833:AAFa0399dWTP2y1Ut8kLJxfV5OYx0t4hk0w"
+BOT_TOKEN = "6144144798:AAHOmtsNN6_g6-eSxWQiJQtZAYXnmzl5cJA"
 bot = Client(
     "bot",
     bot_token=BOT_TOKEN,
@@ -140,7 +140,12 @@ async def account_login(bot: Client, m: Message):
             if "classplus" in url:
                 ytf = None
                 name = name1
-
+            if "mpd" in url:
+                ytf = None
+                name = name1
+            if "manifest" in url:
+                ytf = None
+                name = name1
             if "cloudfront" in url:
                 ytf = None
                 name = name1
@@ -321,6 +326,8 @@ async def account_login(bot: Client, m: Message):
             # if "youtu" in url:
             # if ytf == f"'bestvideo[height<={raw_text2}][ext=mp4]+bestaudio[ext=m4a]'" or "acecwply" in url:
             if "acecwply" in url:
+                cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
+            elif "manifest" in url:
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
             elif "vercel" in url:
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
