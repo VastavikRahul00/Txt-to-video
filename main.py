@@ -144,7 +144,7 @@ async def account_login(bot: Client, m: Message):
                 ytf = None
                 name = name1
             if "manifest" in url:
-                ytf = None
+                vidid = None
                 name = name1
             if "cloudfront" in url:
                 ytf = None
