@@ -71,7 +71,7 @@ async def account_login(bot: Client, m: Message):
         content = content.split("\n")
         links = []
         for i in content:
-            links.append(i.split(":", 1))
+            links.append(i.split("∆", 1))
         os.remove(x)
         # print(len(links))
     except:
@@ -358,7 +358,7 @@ async def account_login(bot: Client, m: Message):
                 Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
                 prog = await m.reply_text(Show)
                 cc = f"**Name  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch  »** {raw_text0}\n**Index  »** {str(count).zfill(3)}"
-                cc1 = f"**Name 📛 »** ** {name1} {res}💔Marty.pdf\n**Batch 🔖 »** {raw_text0}\n**Index 🗂️ »** {str(count).zfill(3)}"
+                cc1 = f"**Name  »** ** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.pdf\n**Batch  »** {raw_text0}\n**Index  »** {str(count).zfill(3)}"
                 #                         await prog.delete (True)
                 #                 if cmd == "pdf" or "drive" in url:
                 #                     try:
@@ -390,7 +390,7 @@ async def account_login(bot: Client, m: Message):
                         await m.reply_document(
                             ka,
                             caption=
-                            f"**Name 📛 »** {name1} {res}💔Marty.pdf\n**Batch 🔖 »** {raw_text0}\n**Index 🗂️ »** {str(count).zfill(3)}"
+                            f"**Name  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.pdf\n**Batch  »** {raw_text0}\n**Index  »** {str(count).zfill(3)}"
                         )
                         count += 1
                         # time.sleep(1)
