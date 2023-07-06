@@ -155,6 +155,9 @@ async def account_login(bot: Client, m: Message):
                         text = await resp.text()
                         url = re.search(r"(https://.*?playlist.m3u8.*?)\"", text).group(1)
 
+            if "jw-prod" in url:
+                cmd = f'yt-dlp -o "{name}.mp4" "{url}"'
+                
             if raw_text2 == "144":
 
                 cmd = f'yt-dlp -F "{url}"'
