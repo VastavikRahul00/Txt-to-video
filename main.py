@@ -152,7 +152,9 @@ async def account_login(bot: Client, m: Message):
                         text = await resp.text()
                         url = re.search(r"(https://.*?playlist.m3u8.*?)\"", text).group(1)
             
-              
+            if '/master.mpd' in url:
+                 id =  url.split("/")[-2]
+                 url =  "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
 
             if raw_text2 == "144":
 
