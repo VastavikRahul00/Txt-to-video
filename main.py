@@ -26,7 +26,7 @@ import io
 
 API_ID = 10577960
 API_HASH = "80fd047285f4e94ca80311928b6bb5da"
-BOT_TOKEN = "6133434192:AAHDkrhW9sgqzLU3ay4o7GRy_yPyDuWJdIc"
+BOT_TOKEN = "6384761642:AAF4K2iVjcd_lk1N2GhnYJddMCfL-aSRLD8"
 bot = Client(
     "bot",
     bot_token=BOT_TOKEN,
@@ -71,7 +71,7 @@ async def account_login(bot: Client, m: Message):
         content = content.split("\n")
         links = []
         for i in content:
-            links.append(i.split("∆", 1))
+            links.append(i.split("://", 1))
         os.remove(x)
         # print(len(links))
     except:
