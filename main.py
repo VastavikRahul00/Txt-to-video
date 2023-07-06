@@ -26,7 +26,7 @@ import io
 
 API_ID = 10577960
 API_HASH = "80fd047285f4e94ca80311928b6bb5da"
-BOT_TOKEN = "6384761642:AAF4K2iVjcd_lk1N2GhnYJddMCfL-aSRLD8"
+BOT_TOKEN = "6384761642:AAFOr2X-ZaFlC20COIGrWOgHTRiurjEuPMk"
 bot = Client(
     "bot",
     bot_token=BOT_TOKEN,
