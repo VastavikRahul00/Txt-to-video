@@ -50,17 +50,17 @@ async def account_login(bot: Client, m: Message):
 
     try:
         with open(x, "r") as f:
-          content = f.read()
+            content = f.read()
         content = content.split("\n")
         links = []
         for i in content:
-                links.append(i.split("://", 1))
-            os.remove(x)
-            # print(len(links)
-        except:
-            await m.reply_text("Invalid file input.🥲")
-            os.remove(x)
-            return
+            links.append(i.split(":", 1))
+        os.remove(x)
+        # print(len(links))
+    except:
+        await m.reply_text("Invalid file input.")
+        os.remove(x)
+        return
     
    
     await editable.edit(f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **1**")
