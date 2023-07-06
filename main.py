@@ -37,12 +37,12 @@ bot = Client(
 @bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
 
- editable = await m.reply_text("**Hi Press**\n**Text** = /pro_txt\n**Top** = /pro_top\n**Vision** = /pro_vision\n**Jw** = /pro_jw\n**Olive** = /pro_olive\n**Addapdf** = /adda_pdf")
+ editable = await m.reply_text("**Hi i am a multiple text downloader Press**\n**download text** = /text\n**MERE PYARE PAPA👼** = 🇨‌ 🇴‌ 🇻 🇮 🇩")
 
 
 @bot.on_message(filters.command(["cancel"]))
 async def cancel(_, m):
-    editable = await m.reply_text("Canceling All process Plz wait\nðŸš¦ðŸš¦ Last Process Stopped ðŸš¦ðŸš¦")
+    editable = await m.reply_text("Canceling All process Plz wait\ Last Process Stopped🛑 ")
     global cancel
     cancel = True
     await editable.edit("cancled")
@@ -55,9 +55,9 @@ async def restart_handler(_, m):
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command(["pro_txt"]))
+@bot.on_message(filters.command(["text"]))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text('Send TXT in **NAME : LINK** format to download')
+    editable = await m.reply_text('Send TXT')
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
@@ -90,7 +90,7 @@ async def account_login(bot: Client, m: Message):
     except:
         arg = 0
 
-    editable = await m.reply_text("**Enter Title**")
+    editable = await m.reply_text("**Enter Batch Name**")
     input0: Message = await bot.listen(editable.chat.id)
     raw_text0 = input0.text
 
