@@ -357,8 +357,8 @@ async def account_login(bot: Client, m: Message):
             try:
                 Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
                 prog = await m.reply_text(Show)
-                cc = f"**Name 📛 »** {name1} {res}💔Marty.mkv\n**Batch 🔖 »** {raw_text0}\n**Index 🗂️ »** {str(count).zfill(3)}"
-                cc1 = f"**Name 📛 Â»** ** {name1} {res}💔Marty.pdf\n**Batch 🔖 »** {raw_text0}\n**Index 🗂️ »** {str(count).zfill(3)}"
+                cc = f"**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch  »** {raw_text0}"
+                cc1 = f"**Vid_id  »** {str(count).zfill(3)}\n**Title  »** ** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.pdf\n**Batch  »** {raw_text0}"
                 #                         await prog.delete (True)
                 #                 if cmd == "pdf" or "drive" in url:
                 #                     try:
@@ -412,7 +412,7 @@ async def account_login(bot: Client, m: Message):
 
             except Exception as e:
                 await m.reply_text(
-                    f"**downloading failed âŒ**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
+                    f"**downloading failed **\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
                 )
                 continue
 
