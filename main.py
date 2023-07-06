@@ -16,6 +16,7 @@ import logging
 import time
 import glob
 import aiohttp
+from aiohttp import ClientSession
 import asyncio
 from pyrogram.types import User, Message
 import sys
