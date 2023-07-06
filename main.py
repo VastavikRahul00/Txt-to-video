@@ -16,7 +16,6 @@ import logging
 import time
 import glob
 import aiohttp
-from aiohttp import ClientSession
 import asyncio
 from pyrogram.types import User, Message
 import sys
@@ -37,12 +36,12 @@ bot = Client(
 @bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
 
- editable = await m.reply_text("**Hi i am a multiple text downloader Press**\n**download text** = /text\n**MERE PYARE PAPA👼** = 🇨‌ 🇴‌ 🇻 🇮 🇩")
+ editable = await m.reply_text("**Hi Press**\n**Text** = /txt")
 
 
 @bot.on_message(filters.command(["cancel"]))
 async def cancel(_, m):
-    editable = await m.reply_text("Canceling All process Plz wait\ Last Process Stopped🛑 ")
+    editable = await m.reply_text("Canceling All process Plz wait\nðŸš¦ðŸš¦ Last Process Stopped ðŸš¦ðŸš¦")
     global cancel
     cancel = True
     await editable.edit("cancled")
@@ -55,9 +54,9 @@ async def restart_handler(_, m):
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command(["text"]))
+@bot.on_message(filters.command(["txt"]))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text('Send TXT')
+    editable = await m.reply_text('Send TXT in **NAME : LINK** format to download')
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
@@ -90,7 +89,7 @@ async def account_login(bot: Client, m: Message):
     except:
         arg = 0
 
-    editable = await m.reply_text("**Enter Batch Name**")
+    editable = await m.reply_text("**Enter Title**")
     input0: Message = await bot.listen(editable.chat.id)
     raw_text0 = input0.text
 
@@ -145,6 +144,7 @@ async def account_login(bot: Client, m: Message):
             if "cloudfront" in url:
                 ytf = None
                 name = name1
+
             if '/master.mpd' in url:
                 id =  url.split("/")[-2]
                 url =  "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
@@ -162,7 +162,7 @@ async def account_login(bot: Client, m: Message):
                 cmd=f'yt-dlp -o "{name}.mp4" "{url}"'   
             if "kdcampus" or "streamlock" in url:
                 cmd=f'yt-dlp -o "{name}.mp4" "{url}"'
-            
+
             if raw_text2 == "144":
 
                 cmd = f'yt-dlp -F "{url}"'
@@ -364,8 +364,8 @@ async def account_login(bot: Client, m: Message):
             try:
                 Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
                 prog = await m.reply_text(Show)
-                cc = f"**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch  »** {raw_text0}"
-                cc1 = f"**Vid_id  »** {str(count).zfill(3)}\n**Title  »** ** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.pdf\n**Batch  »** {raw_text0}"
+                cc = f"**Name 📛 »** {name1} {res}💔Marty.mkv\n**Batch 🔖 »** {raw_text0}\n**Index 🗂️ »** {str(count).zfill(3)}"
+                cc1 = f"**Name 📛 Â»** ** {name1} {res}💔Marty.pdf\n**Batch 🔖 »** {raw_text0}\n**Index 🗂️ »** {str(count).zfill(3)}"
                 #                         await prog.delete (True)
                 #                 if cmd == "pdf" or "drive" in url:
                 #                     try:
@@ -419,12 +419,13 @@ async def account_login(bot: Client, m: Message):
 
             except Exception as e:
                 await m.reply_text(
-                    f"**downloading failed 🥺**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
+                    f"**downloading failed **\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
                 )
                 continue
 
     except Exception as e:
         await m.reply_text(e)
-    await m.reply_text("Download Complete🙂")
-   
+    await m.reply_text("Done")
+
+
 bot.run()
