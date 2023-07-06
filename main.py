@@ -26,7 +26,7 @@ import io
 
 API_ID = 10577960
 API_HASH = "80fd047285f4e94ca80311928b6bb5da"
-BOT_TOKEN = "6327769833:AAFa0399dWTP2y1Ut8kLJxfV5OYx0t4hk0w"
+BOT_TOKEN = "6133434192:AAHDkrhW9sgqzLU3ay4o7GRy_yPyDuWJdIc"
 bot = Client(
     "bot",
     bot_token=BOT_TOKEN,
@@ -71,7 +71,7 @@ async def account_login(bot: Client, m: Message):
         content = content.split("\n")
         links = []
         for i in content:
-            links.append(i.split("¥", 1))
+            links.append(i.split("∆", 1))
         os.remove(x)
         # print(len(links))
     except:
@@ -331,8 +331,6 @@ async def account_login(bot: Client, m: Message):
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
             elif "vercel" in url:
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
-            elif "kdcampus" or "streamlock" in url:
-                cmd=f'yt-dlp -o "{name}.mp4" "{url}"'
             elif "youtu" in url:
                 cmd = f'yt-dlp -i -f "bestvideo[height<={raw_text2}]+bestaudio" --no-keep-video --remux-video mkv --no-warning "{url}" -o "{name}.%(ext)s"'
             elif "player.vimeo" in url:
@@ -349,8 +347,6 @@ async def account_login(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
             elif "cloudfront" or "livestream" in url:
                 cmd = f'yt-dlp -f "{ytf}" --no-keep-video --remux-video mkv "{url}"'
-            elif "jw-prod" in url:
-                cmd = f'yt-dlp -o "{name}.mp4" "{url}"'
             elif ytf == "0" or "unknown" in out:
                 cmd = f'yt-dlp -f "{ytf}" --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
             elif ".pdf" or "download" in url:
@@ -361,8 +357,8 @@ async def account_login(bot: Client, m: Message):
             try:
                 Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
                 prog = await m.reply_text(Show)
-                cc = f"**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch  »** {raw_text0}"
-                cc1 = f"**Name  »** ** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.pdf\n**Batch  »** {raw_text0}\n**Index  »** {str(count).zfill(3)}"
+                cc = f"**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}.mkv\n**Batch  »** {raw_text0}"
+                cc1 = f"**Name 📛 Â»** ** {name1} {res}💔Marty.pdf\n**Batch 🔖 »** {raw_text0}\n**Index 🗂️ »** {str(count).zfill(3)}"
                 #                         await prog.delete (True)
                 #                 if cmd == "pdf" or "drive" in url:
                 #                     try:
@@ -394,7 +390,7 @@ async def account_login(bot: Client, m: Message):
                         await m.reply_document(
                             ka,
                             caption=
-                            f"**Name  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.pdf\n**Batch  »** {raw_text0}\n**Index  »** {str(count).zfill(3)}"
+                            f"**Name 📛 »** {name1} {res}💔Marty.pdf\n**Batch 🔖 »** {raw_text0}\n**Index 🗂️ »** {str(count).zfill(3)}"
                         )
                         count += 1
                         # time.sleep(1)
@@ -416,7 +412,7 @@ async def account_login(bot: Client, m: Message):
 
             except Exception as e:
                 await m.reply_text(
-                    f"**downloading failed **\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
+                    f"**downloading failed âŒ**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
                 )
                 continue
 
