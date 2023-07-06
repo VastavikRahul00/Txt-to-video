@@ -61,13 +61,7 @@ async def account_login(bot: Client, m: Message):
         await m.reply_text("Invalid file input.ðŸ¥²")
         os.remove(x)
         return
-    else:
-        content = input.text
-        content = content.split("\n")
-        links = []
-        for i in content:
-            links.append(i.split("://", 1))
-   
+    
     await editable.edit(f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **1**")
     input0: Message = await bot.listen(editable.chat.id)
     raw_text = input0.text
