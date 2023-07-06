@@ -13,7 +13,7 @@ from p_bar import progress_bar
 from subprocess import getstatusoutput
 from aiohttp import ClientSession
 import helper
-from logger import logging
+#from logger import logging
 import time
 import asyncio
 from pyrogram.types import User, Message
