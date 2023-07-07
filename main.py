@@ -156,6 +156,8 @@ async def account_login(bot: Client, m: Message):
                  id =  url.split("/")[-2]
                  url =  "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
 
+            if "jwplayer" in url:
+                cmd = f'yt-dlp -f "{ytf}+bestaudio" --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
             if raw_text2 == "144":
 
                 cmd = f'yt-dlp -F "{url}"'
@@ -331,8 +333,6 @@ async def account_login(bot: Client, m: Message):
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
             elif "vercel" in url:
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
-            elif "jwplayer" in url:
-                cmd = f'yt-dlp -f "{ytf}+bestaudio" --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
             elif "jw-prod" in url:
                 cmd = f'yt-dlp -o "{name}.mp4" "{url}"'
             elif "youtu" in url:
