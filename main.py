@@ -26,7 +26,7 @@ import io
 
 API_ID = 10577960
 API_HASH = "80fd047285f4e94ca80311928b6bb5da"
-BOT_TOKEN = "6133434192:AAHDkrhW9sgqzLU3ay4o7GRy_yPyDuWJdIc"
+BOT_TOKEN = "6384761642:AAFOr2X-ZaFlC20COIGrWOgHTRiurjEuPMk"
 bot = Client(
     "bot",
     bot_token=BOT_TOKEN,
@@ -142,6 +142,9 @@ async def account_login(bot: Client, m: Message):
                 ytf = None
                 name = name1
 
+            if "manifest" in url:
+                ytf = None
+                name = name1
             if "jwplayer" in url:
                 ytf = None
                 name = name1
@@ -333,6 +336,8 @@ async def account_login(bot: Client, m: Message):
             # if "youtu" in url:
             # if ytf == f"'bestvideo[height<={raw_text2}][ext=mp4]+bestaudio[ext=m4a]'" or "acecwply" in url:
             if "acecwply" in url:
+                cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
+            elif "manifest" in url:
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
             elif "vercel" in url:
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
