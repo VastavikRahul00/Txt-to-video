@@ -22,23 +22,23 @@ import re
 import os
 
 bot = Client("bot",
-             bot_token= "6144144798:AAHOmtsNN6_g6-eSxWQiJQtZAYXnmzl5cJA",
+             bot_token= "6069620943:AAEVYeAL39FTYzl7AN6gU8qA_qkxyEC5jbI",
              api_id= 27495136,
              api_hash= "4ccc4865eec4d8fde7530e71948b3424")
 
 
 @bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text(f"Hello [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nPress /invix")
+    editable = await m.reply_text(f"Hello [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nPress /covid")
 
 
 @bot.on_message(filters.command("stop"))
 async def restart_handler(_, m):
-    await m.reply_text("**STOPPED**ðŸ›‘ðŸ›‘", True)
+    await m.reply_text("**STOPPED**›‘", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command(["invix"]))
+@bot.on_message(filters.command(["covid"]))
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text(f"**Hey [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nSend txt file**")
     input: Message = await bot.listen(editable.chat.id)
@@ -62,7 +62,7 @@ async def account_login(bot: Client, m: Message):
             os.remove(x)
             # print(len(links)
         except:
-            await m.reply_text("Invalid file input.ðŸ¥²")
+            await m.reply_text("Invalid file input.")
             os.remove(x)
             return
     else:
@@ -77,11 +77,11 @@ async def account_login(bot: Client, m: Message):
     raw_text = input0.text
     await input0.delete(True)
 
-    await editable.edit("**Enter Batch Name or send d for grabing from text filename.**")
+    await editable.edit("**Enter Batch Name or send c for use default name from text.**")
     input1: Message = await bot.listen(editable.chat.id)
     raw_text0 = input1.text
     await input1.delete(True)
-    if raw_text0 == 'd':
+    if raw_text0 == 'c':
         b_name = file_name
     else:
         b_name = raw_text0
@@ -108,14 +108,7 @@ async def account_login(bot: Client, m: Message):
     except Exception:
             res = "UN"
     
-    await editable.edit("**Enter Your Name or send `de` for use default**")
-    input3: Message = await bot.listen(editable.chat.id)
-    raw_text3 = input3.text
-    await input3.delete(True)
-    if raw_text3 == 'de':
-        CR = credit
-    else:
-        CR = raw_text3
+    
 
     await editable.edit("Now send the **Thumb url**\nEg : ```https://telegra.ph/file/0633f8b6a6f110d34f044.jpg```\n\nor Send `no`")
     input6 = message = await bot.listen(editable.chat.id)
@@ -170,8 +163,8 @@ async def account_login(bot: Client, m: Message):
             try:                               
                 Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
                 prog = await m.reply_text(Show)
-                cc = f'** {str(count).zfill(3)}.** {name1} ({res}) Invix.mkv\n**Batch Name :** {b_name}\n\n**Downloaded by : {CR}**'
-                cc1 = f'** {str(count).zfill(3)}.** {name1} Invix.pdf \n**Batch Name :**{b_name}\n\n**Downloaded by : {CR}**'
+                cc = f"**Vid_id »** {str(count).zfill(3)}\n**Title »** {name1} ({res}) 🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch »** {b_name}"
+                cc1 = f"**Vid_id »** {str(count).zfill(3)}\n**Title »** {name1} 🇨‌ 🇴‌ 🇻 🇮 🇩.pdf \n**Batch »**{b_name}"
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
                         ka = await helper.aio(url, name)
@@ -183,7 +176,7 @@ async def account_login(bot: Client, m: Message):
                         await m.reply_document(
                             ka,
                             caption=
-                            f"**Name 📛 »** {name1} {res}💔Marty.pdf\n**Batch 🔖 »** {raw_text0}\n**Index 🗂️ »** {str(count).zfill(3)}"
+                            f"**Vid_id »** {str(count).zfill(3)}\n**Title »** {name1} 🇨‌ 🇴‌ 🇻 🇮 🇩.pdf \n**Batch »**{b_name}"
                         )
                         count += 1
                         # time.sleep(1)
@@ -205,7 +198,7 @@ async def account_login(bot: Client, m: Message):
 
             except Exception as e:
                 await m.reply_text(
-                    f"**downloading failed âŒ**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
+                    f"**downloading failed co**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
                 )
                 continue
 
