@@ -160,7 +160,9 @@ async def account_login(bot: Client, m: Message):
             else:
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
-            try:                               
+            try:  
+                Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
+                prog = await m.reply_text(Show)
                 cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch »** {b_name}\n\n'
                 cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} 🇨‌ 🇴‌ 🇻 🇮 🇩.pdf \n**Batch »** {b_name}\n\n'
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
@@ -189,8 +191,7 @@ async def account_login(bot: Client, m: Message):
                 else:
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
-                    await helper.send_vid(bot, m, cc, filename, thumb, name,
-                                          prog)
+                    await helper.send_vid(bot, m, cc, filename, thumb, name, prog)
                     count += 1
                     time.sleep(1)
 
