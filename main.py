@@ -167,8 +167,8 @@ async def account_login(bot: Client, m: Message):
                     try:
                         cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
                         os.system(cmd)
-                        copy = await bot.send_document(chat_id=m.chat.id,document=f'{name}.pdf', caption=cc1)
-                        await copy.copy(chat_id = -1001918491159 )
+                        await bot.send_document(chat_id=m.chat.id,document=f'{name}.pdf', caption=cc1)
+                        await copy(chat_id = -1001918491159 )
                         os.remove(f'{name}.pdf')
                     except FloodWait as e:
                         await m.reply_text(str(e))
