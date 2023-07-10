@@ -153,8 +153,8 @@ async def account_login(bot: Client, m: Message):
             try:  
                 Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
                 prog = await m.reply_text(Show)
-                cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch »** {raw_text0}\n\n'
-                cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} 🇨‌ 🇴‌ 🇻 🇮 🇩.pdf \n**Batch »** {raw_text0}\n\n'
+                cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}.mkv\n**Batch »** {raw_text0}\n\n'
+                cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} .pdf \n**Batch »** {raw_text0}\n\n'
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
                         ka = await helper.aio(url, name)
@@ -166,7 +166,7 @@ async def account_login(bot: Client, m: Message):
                         await m.reply_document(
                             ka,
                             caption=
-             f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} 🇨‌ 🇴‌ 🇻 🇮 🇩.pdf \n**Batch »** {raw_text0}\n\n'
+             f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1}.pdf \n**Batch »** {raw_text0}\n\n'
                         )
                         count += 1
                         # time.sleep(1)
