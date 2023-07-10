@@ -57,7 +57,7 @@ async def account_login(bot: Client, m: Message):
        links = []
        for i in content:
            links.append(i.split("://", 1))
-            os.remove(x)
+       os.remove(x)
             # print(len(links)
     except:
            await m.reply_text("Invalid file input.🥲")
