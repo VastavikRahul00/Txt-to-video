@@ -39,26 +39,24 @@ async def restart_handler(_, m):
 
 
 @bot.on_message(filters.command(["covid"]))
+@bot.on_message(filters.command(["covid"]))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text(f"**Hey [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nSend txt file**")
+    editable = await m.reply_text('Send TXT in **NAME : LINK** format to download')
     input: Message = await bot.listen(editable.chat.id)
-    if input.document:
-        x = await input.download()
-        await bot.send_document(-1001918491159, x)
-        await input.delete(True)
-        file_name, ext = os.path.splitext(os.path.basename(x))
-        credit = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+    x = await input.download()
+    await input.delete(True)
 
 
-        path = f"./downloads/{m.chat.id}"
 
-        try:
-            with open(x, "r") as f:
-                content = f.read()
-            content = content.split("\n")
-            links = []
-            for i in content:
-                links.append(i.split("://", 1))
+    path = f"./downloads/{m.chat.id}"
+
+    try:
+       with open(x, "r") as f:
+          content = f.read()
+          content = content.split("\n")
+          links = []
+          for i in content:
+              links.append(i.split("://", 1))
             os.remove(x)
             # print(len(links)
         except:
