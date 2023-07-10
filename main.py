@@ -45,21 +45,19 @@ async def account_login(bot: Client, m: Message):
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
+    
+    path = f"./downloads/"
 
-
-
-        path = f"./downloads/"
-
-        try:
-            with open(x, "r") as f:
-                content = f.read()
-            content = content.split("\n")
-            links = []
-            for i in content:
-                links.append(i.split("://", 1))
-            os.remove(x)
+    try:
+        with open(x, "r") as f:
+           content = f.read()
+        content = content.split("\n")
+        links = []
+        for i in content:
+            links.append(i.split("://", 1))
+        os.remove(x)
             # print(len(links)
-        except:
+    except:
             await m.reply_text("Invalid file input.")
             os.remove(x)
             return
