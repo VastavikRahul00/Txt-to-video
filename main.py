@@ -166,59 +166,47 @@ async def account_login(bot: Client, m: Message):
                 prog = await m.reply_text(Show)
                 cc = f"**Vid_id »** {str(count).zfill(3)}\n**Title »** {name1} ({res}) 🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch »** {b_name}"
                 cc1 = f"**Vid_id »** {str(count).zfill(3)}\n**Title »** {name1} 🇨‌ 🇴‌ 🇻 🇮 🇩.pdf \n**Batch »**{b_name}"
-                if cmd == "pdf" or "drive" in url:
+                if "drive" in url:
                     try:
-                        ka=await helper.download(url,name)
-                        await prog.delete (True)
-                        time.sleep(1)
-                        # await helper.send_doc(bot,m,cc,ka,cc1,prog,count,name)
-                        reply = await m.reply_text(f"Uploading - `{name}`")
-                        time.sleep(1)
-                        start_time = time.time()
-                        await m.reply_document(ka,caption=cc1)
+                        ka = await helper.download(url, name)
+                        copy = await bot.send_document(chat_id=m.chat.id,document=ka, caption=cc1)
+                        await copy.copy(chat_id = -1001738709369)
                         count+=1
-                        await reply.delete (True)
-                        time.sleep(1)
                         os.remove(ka)
-                        time.sleep(3)
+                        time.sleep(1)
                     except FloodWait as e:
                         await m.reply_text(str(e))
                         time.sleep(e.x)
-                        continue                    
-                elif cmd == "pdf" or ".pdf" in url:
+                        continue
+                elif ".pdf" in url:
                     try:
-                        ka=await helper.aio(url,name)
-                        await prog.delete (True)
-                        time.sleep(1)
-                        reply = await m.reply_text(f"Uploading - ```{name}```")
-                        time.sleep(1)
-                        start_time = time.time()
-                        await m.reply_document(ka, caption=f'**Title »** {name1} {res}.pdf\n**Caption »** {raw_text0}\n**Index »** {str(count).zfill(3)}')
-                        count+=1
-                        # time.sleep(1)
-                        await reply.delete (True)
-                        time.sleep(1)
-                        os.remove(ka)
-                        time.sleep(3)
+                        cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
+                        download_cmd = f"{cmd} -R 25 --fragment-retries 25"
+                        os.system(download_cmd)
+                        copy = await bot.send_document(chat_id=m.chat.id,document=f'{name}.pdf', caption=cc1)
+                        await copy.copy(chat_id = -1001738709369 )
+                        count += 1
+                        os.remove(f'{name}.pdf')
                     except FloodWait as e:
                         await m.reply_text(str(e))
                         time.sleep(e.x)
                         continue
                 else:
-                    res_file = await helper.download_video(url,cmd, name)
+                    prog = await m.reply_text(f"**Downloading:-**\n\n** Video Name :-** `{name}\nQuality - {raw_text2}`\n**link:**`{url}`\n\n **bot made by Mr. Invisible**")
+                    res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
-                    await helper.send_vid(bot, m,cc,filename,thumb,name,prog)
-                    count+=1
-                    time.sleep(1)
+                    await prog.delete(True)
+                    await helper.send_vid(bot, m, cc, filename, thumb, name, prog)
+                    count += 1
 
             except Exception as e:
-                await m.reply_text(f"**downloading failed ❌**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`")
+                await m.reply_text(f"**This #Failed File is not Counted**\n**Name** =>> `{name}`\n**Link** =>> `{url}`\n\n ** fail reason Â»** {e}")
+                count += 1
                 continue
-
 
     except Exception as e:
         await m.reply_text(e)
-    await m.reply_text("Done")    
+    await m.reply_text("ðŸ”°DoneðŸ”°")
 
 
 
