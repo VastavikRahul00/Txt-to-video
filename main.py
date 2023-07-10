@@ -85,12 +85,10 @@ async def account_login(bot: Client, m: Message):
         for i in content:
             links.append(i.split("://", 1))
             
-    editable = await m.reply_text(
-        f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **0**"
-    )
+    await editable.edit(f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **1**")
     input1: Message = await bot.listen(editable.chat.id)
-    raw_text = input1.text
-
+    raw_text = input0.text
+    await input1.delete(True)
     try:
         arg = int(raw_text)
     except:
