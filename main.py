@@ -22,7 +22,7 @@ import re
 import os
 
 bot = Client("bot",
-             bot_token= "6369053795:AAF9VQBiL85y6XWnxjYa6wpPyM0sV_A6xwc",
+             bot_token= "5509916510:AAEBfGlNW7hW8a-5p9wcxG30ybsQkDfkqeg",
              api_id= 27495136,
              api_hash= "4ccc4865eec4d8fde7530e71948b3424")
 
@@ -34,7 +34,7 @@ async def account_login(bot: Client, m: Message):
 
 @bot.on_message(filters.command("stop"))
 async def restart_handler(_, m):
-    await m.reply_text("**STOPPED**", True)
+    await m.reply_text("**STOPPED**🛑🛑", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
@@ -62,7 +62,7 @@ async def account_login(bot: Client, m: Message):
             os.remove(x)
             # print(len(links)
         except:
-            await m.reply_text("Invalid file input")
+            await m.reply_text("Invalid file input.🥲")
             os.remove(x)
             return
     else:
@@ -81,7 +81,7 @@ async def account_login(bot: Client, m: Message):
     input1: Message = await bot.listen(editable.chat.id)
     raw_text0 = input1.text
     await input1.delete(True)
-    if raw_text0 == 'C':
+    if raw_text0 == 'd':
         b_name = file_name
     else:
         b_name = raw_text0
@@ -110,7 +110,7 @@ async def account_login(bot: Client, m: Message):
     
     
 
-    await editable.edit("Now send the **Thumb url**\nEg : ```https://telegra.ph/file/0633f8b6a6f110d34f044.jpg```\n\nor Send `No`")
+    await editable.edit("Now send the **Thumb url**\nEg : ```https://telegra.ph/file/0633f8b6a6f110d34f044.jpg```\n\nor Send `no`")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
@@ -121,7 +121,7 @@ async def account_login(bot: Client, m: Message):
         getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
         thumb = "thumb.jpg"
     else:
-        thumb == "No"
+        thumb == "no"
 
     if len(links) == 1:
         count = 1
@@ -161,8 +161,8 @@ async def account_login(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:                               
-                cc = f"Vid_id » {str(count).zfill(3)}\nTitle » {name1} ({res}) 🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\nBatch » {b_name}"
-                cc1 = f"Vid_id » {str(count).zfill(3)}\nTitle » {name1} 🇨‌ 🇴‌ 🇻 🇮 🇩.pdf \nBatch »{b_name}"
+                cc = f'** {str(count).zfill(3)}.** {name1} ({res}) Invix.mkv\n**Batch Name :** {b_name}\n\n'
+                cc1 = f'** {str(count).zfill(3)}.** {name1} Invix.pdf \n**Batch Name :**{b_name}\n\n'
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
@@ -181,7 +181,7 @@ async def account_login(bot: Client, m: Message):
                         download_cmd = f"{cmd} -R 25 --fragment-retries 25"
                         os.system(download_cmd)
                         copy = await bot.send_document(chat_id=m.chat.id,document=f'{name}.pdf', caption=cc1)
-                        await copy.copy(chat_id = -1001738709369 )
+                        await copy.copy(chat_id = -1001918491159 )
                         count += 1
                         os.remove(f'{name}.pdf')
                     except FloodWait as e:
@@ -189,7 +189,7 @@ async def account_login(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    prog = await m.reply_text(f"**Downloading:-**\n\n** Video Name :-** `{name}\nQuality - {raw_text2}`\n**link:**`{url}`\n\n")
+                    prog = await m.reply_text(f"**Downloading:-**\n\n** Video Name :-** `{name}\nQuality - {raw_text2}`\n**link:**`{url}`\n\n **bot made by Mr. Invisible**")
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
                     await prog.delete(True)
@@ -197,13 +197,13 @@ async def account_login(bot: Client, m: Message):
                     count += 1
 
             except Exception as e:
-                await m.reply_text(f"**downloading failed ❌**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`")
+                await m.reply_text(f"**This #Failed File is not Counted**\n**Name** =>> `{name}`\n**Link** =>> `{url}`\n\n ** fail reason »** {e}")
                 count += 1
                 continue
 
     except Exception as e:
         await m.reply_text(e)
-    await m.reply_text("DONE😎")
+    await m.reply_text("🔰Done🔰")
 
 
 bot.run()
