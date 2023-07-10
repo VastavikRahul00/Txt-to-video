@@ -169,7 +169,6 @@ async def account_login(bot: Client, m: Message):
                         os.system(cmd)
                         copy = await bot.send_document(chat_id=m.chat.id,document=f'{name}.pdf', caption=cc1)
                         await copy.copy(chat_id = -1001918491159 )
-                        count += 1
                         os.remove(f'{name}.pdf')
                     except FloodWait as e:
                         await m.reply_text(str(e))
