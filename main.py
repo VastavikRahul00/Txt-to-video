@@ -170,7 +170,7 @@ async def account_login(bot: Client, m: Message):
                     try:
                         ka = await helper.download(url, name)
                         copy = await bot.send_document(chat_id=m.chat.id,document=ka, caption=cc1)
-                        await copy.copy(chat_id = -1001738709369)
+                        await copy.copy(cha_id = -1001918491159)
                         count+=1
                         os.remove(ka)
                         time.sleep(1)
@@ -184,7 +184,7 @@ async def account_login(bot: Client, m: Message):
                         download_cmd = f"{cmd} -R 25 --fragment-retries 25"
                         os.system(download_cmd)
                         copy = await bot.send_document(chat_id=m.chat.id,document=f'{name}.pdf', caption=cc1)
-                        await copy.copy(chat_id = -1001738709369 )
+                        await copy.copy(chat_id = -1001918491159 )
                         count += 1
                         os.remove(f'{name}.pdf')
                     except FloodWait as e:
@@ -192,7 +192,6 @@ async def account_login(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    prog = await m.reply_text(f"**Downloading:-**\n\n** Video Name :-** `{name}\nQuality - {raw_text2}`\n**link:**`{url}`\n\n **bot made by Mr. Invisible**")
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
                     await prog.delete(True)
@@ -200,7 +199,7 @@ async def account_login(bot: Client, m: Message):
                     count += 1
 
             except Exception as e:
-                await m.reply_text(f"**This #Failed File is not Counted**\n**Name** =>> `{name}`\n**Link** =>> `{url}`\n\n ** fail reason Â»** {e}")
+                await m.reply_text(f"**downloading failed ❌**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`")
                 count += 1
                 continue
 
