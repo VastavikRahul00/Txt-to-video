@@ -34,7 +34,7 @@ async def account_login(bot: Client, m: Message):
 
 @bot.on_message(filters.command("stop"))
 async def restart_handler(_, m):
-    await m.reply_text("**STOPPED**ðŸ›‘ðŸ›‘", True)
+    await m.reply_text("**STOPPED**🛑🛑", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
@@ -62,7 +62,7 @@ async def account_login(bot: Client, m: Message):
             os.remove(x)
             # print(len(links)
         except:
-            await m.reply_text("Invalid file input.ðŸ¥²")
+            await m.reply_text("Invalid file input.🥲")
             os.remove(x)
             return
     else:
@@ -161,51 +161,48 @@ async def account_login(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:                               
-                cc = f'**Vid_id  Â»** {str(count).zfill(3)}\n**Title  Â»** {name1} {res}ðŸ‡¨â€Œ ðŸ‡´â€Œ ðŸ‡» ðŸ‡® ðŸ‡©.mkv\n**Batch Â»** {b_name}\n\n'
-                cc1 = f'**Vid_id  Â»** {str(count).zfill(3)}\n**Title Â»** {name1} ðŸ‡¨â€Œ ðŸ‡´â€Œ ðŸ‡» ðŸ‡® ðŸ‡©.pdf \n**Batch Â»** {b_name}\n\n'
-                if "drive" in url:
+                cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch »** {b_name}\n\n'
+                cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} 🇨‌ 🇴‌ 🇻 🇮 🇩.pdf \n**Batch »** {b_name}\n\n'
+                if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
-                        ka = await helper.download(url, name)
-                        copy = await bot.send_document(chat_id=m.chat.id,document=ka, caption=cc1)
-                        await copy.copy(chat_id = -1001738709369)
-                        count+=1
-                        os.remove(ka)
+                        ka = await helper.aio(url, name)
+                        await prog.delete(True)
                         time.sleep(1)
-                    except FloodWait as e:
-                        await m.reply_text(str(e))
-                        time.sleep(e.x)
-                        continue
-                elif ".pdf" in url:
-                    try:
-                        cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
-                        download_cmd = f"{cmd} -R 25 --fragment-retries 25"
-                        os.system(download_cmd)
-                        copy = await bot.send_document(chat_id=m.chat.id,document=f'{name}.pdf', caption=cc1)
-                        await copy.copy(chat_id = -1001918491159 )
+                        reply = await m.reply_text(f"Uploading - ```{name}```")
+                        time.sleep(1)
+                        start_time = time.time()
+                        await m.reply_document(
+                            ka,
+                            caption=
+                            f"**Name 📛 »** {name1} {res}💔Marty.pdf\n**Batch 🔖 »** {raw_text0}\n**Index 🗂️ »** {str(count).zfill(3)}"
+                        )
                         count += 1
-                        os.remove(f'{name}.pdf')
+                        # time.sleep(1)
+                        await reply.delete(True)
+                        time.sleep(1)
+                        os.remove(ka)
+                        time.sleep(3)
                     except FloodWait as e:
                         await m.reply_text(str(e))
                         time.sleep(e.x)
                         continue
                 else:
-                    prog = await m.reply_text(f"**Downloading:-**\n\n** Video Name :-** `{name}\nQuality - {raw_text2}`\n**link:**`{url}`")
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
-                    await prog.delete(True)
-                    await helper.send_vid(bot, m, cc, filename, thumb, name, prog)
+                    await helper.send_vid(bot, m, cc, filename, thumb, name,
+                                          prog)
                     count += 1
+                    time.sleep(1)
 
             except Exception as e:
                 await m.reply_text(
-                    f"**downloading failed **\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
+                    f"**downloading failed âŒ**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
                 )
-                count += 1
                 continue
 
     except Exception as e:
         await m.reply_text(e)
-    await m.reply_text("ðŸ”°DoneðŸ”°")
+    await m.reply_text("Done")
 
 
 bot.run()
