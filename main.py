@@ -41,16 +41,14 @@ async def restart_handler(_, m):
 
 @bot.on_message(filters.command(["covid"]))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text(f"**Hey [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nSend txt file**")
+    editable = await m.reply_text("Send txt file**")
     input: Message = await bot.listen(editable.chat.id)
-    if input.document:
-        x = await input.download()
-        await input.delete(True)
-        file_name, ext = os.path.splitext(os.path.basename(x))
-        credit = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+    x = await input.download()
+    await input.delete(True)
 
 
-        path = f"./downloads/{m.chat.id}"
+
+        path = f"./downloads/"
 
         try:
             with open(x, "r") as f:
@@ -163,19 +161,8 @@ async def account_login(bot: Client, m: Message):
             try:                               
                 cc = f"**Vid_id »** {str(count).zfill(3)}\n**Title »** {name1} ({res}) 🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch »** {b_name}"
                 cc1 = f"**Vid_id »** {str(count).zfill(3)}\n**Title »** {name1} 🇨‌ 🇴‌ 🇻 🇮 🇩.pdf \n**Batch »**{b_name}"
-                if "drive" in url:
-                    try:
-                        ka = await helper.download(url, name)
-                        copy = await bot.send_document(chat_id=m.chat.id,document=ka, caption=cc1)
-                        await copy.copy()
-                        count+=1
-                        os.remove(ka)
-                        time.sleep(1)
-                    except FloodWait as e:
-                        await m.reply_text(str(e))
-                        time.sleep(e.x)
-                        continue
-                elif ".pdf" in url:
+                
+                if ".pdf" in url:
                     try:
                         cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
                         download_cmd = f"{cmd} -R 25 --fragment-retries 25"
