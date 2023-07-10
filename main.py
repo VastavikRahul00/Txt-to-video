@@ -166,22 +166,37 @@ async def account_login(bot: Client, m: Message):
                 prog = await m.reply_text(Show)
                 cc = f"**Vid_id »** {str(count).zfill(3)}\n**Title »** {name1} ({res}) 🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch »** {b_name}"
                 cc1 = f"**Vid_id »** {str(count).zfill(3)}\n**Title »** {name1} 🇨‌ 🇴‌ 🇻 🇮 🇩.pdf \n**Batch »**{b_name}"
-                if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
+                if cmd == "pdf" or "drive" in url:
                     try:
-                        ka = await helper.download(url, name)
-                        await prog.delete(True)
+                        ka=await helper.download(url,name)
+                        await prog.delete (True)
+                        time.sleep(1)
+                        # await helper.send_doc(bot,m,cc,ka,cc1,prog,count,name)
+                        reply = await m.reply_text(f"Uploading - `{name}`")
+                        time.sleep(1)
+                        start_time = time.time()
+                        await m.reply_document(ka,caption=cc1)
+                        count+=1
+                        await reply.delete (True)
+                        time.sleep(1)
+                        os.remove(ka)
+                        time.sleep(3)
+                    except FloodWait as e:
+                        await m.reply_text(str(e))
+                        time.sleep(e.x)
+                        continue                    
+                elif cmd == "pdf" or ".pdf" in url:
+                    try:
+                        ka=await helper.aio(url,name)
+                        await prog.delete (True)
                         time.sleep(1)
                         reply = await m.reply_text(f"Uploading - ```{name}```")
                         time.sleep(1)
                         start_time = time.time()
-                        await m.reply_document(
-                            ka,
-                            caption=
-                            f"**Name  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.pdf\n**Batch  »** {raw_text0}\n**Index  »** {str(count).zfill(3)}"
-                        )
-                        count += 1
+                        await m.reply_document(ka, caption=f'**Title »** {name1} {res}.pdf\n**Caption »** {raw_text0}\n**Index »** {str(count).zfill(3)}')
+                        count+=1
                         # time.sleep(1)
-                        await reply.delete(True)
+                        await reply.delete (True)
                         time.sleep(1)
                         os.remove(ka)
                         time.sleep(3)
@@ -190,22 +205,20 @@ async def account_login(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    res_file = await helper.download_video(url, cmd, name)
+                    res_file = await helper.download_video(url,cmd, name)
                     filename = res_file
-                    await helper.send_vid(bot, m, cc, filename, thumb, name,
-                                          prog)
-                    count += 1
+                    await helper.send_vid(bot, m,cc,filename,thumb,name,prog)
+                    count+=1
                     time.sleep(1)
 
             except Exception as e:
-                await m.reply_text(
-                    f"**downloading failed co**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
-                )
+                await m.reply_text(f"**downloading failed ❌**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`")
                 continue
+
 
     except Exception as e:
         await m.reply_text(e)
-    await m.reply_text("Done")
+    await m.reply_text("Done")    
 
 
 
