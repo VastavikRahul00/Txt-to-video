@@ -78,8 +78,8 @@ async def account_login(bot: Client, m: Message):
         await m.reply_text("Invalid file input.")
         os.remove(x)
         return
-else: 
-   content = input.text
+    else: 
+      content = input.text
         content = content.split("\n")
         links = []
         for i in content:
