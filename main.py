@@ -133,18 +133,7 @@ async def account_login(bot: Client, m: Message):
             elif 'videos.classplusapp' in url:
              url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': 'eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgzNjkyMTIsIm9yZ0lkIjoyNjA1LCJ0eXBlIjoxLCJtb2JpbGUiOiI5MTcwODI3NzQyODkiLCJuYW1lIjoiQWNlIiwiZW1haWwiOm51bGwsImlzRmlyc3RMb2dpbiI6dHJ1ZSwiZGVmYXVsdExhbmd1YWdlIjpudWxsLCJjb3VudHJ5Q29kZSI6IklOIiwiaXNJbnRlcm5hdGlvbmFsIjowLCJpYXQiOjE2NDMyODE4NzcsImV4cCI6MTY0Mzg4NjY3N30.hM33P2ai6ivdzxPPfm01LAd4JWv-vnrSxGXqvCirCSpUfhhofpeqyeHPxtstXwe0'}).json()['url']
 
-            elif 'manifest' in url:
-                            video_response = requests.get(f"{bc_url}/{bcvid}", headers=bc_hdr)
-                            video = video_response.json()
-                            video_source = video["sources"][5]
-                            video_url = video_source["src"]
-                            #print(video_url)
-
-                            surl=requests.get("https://elearn.crwilladmin.com/api/v3/livestreamToken?type=brightcove&vid="+vidid+"&token="+token)
-                            stoken = surl.json()["data"]["token"]
-                            #print(stoken)
-
-                            link = video_url+"&bcov_auth="+stoken
+           
             elif '/master.mpd' in url:
              id =  url.split("/")[-2]
              url =  "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
