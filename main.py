@@ -47,6 +47,8 @@ async def account_login(bot: Client, m: Message):
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
+    credit = f"no"
+
 
 
 
@@ -81,8 +83,8 @@ async def account_login(bot: Client, m: Message):
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
-    if raw_text3 == 'no':
-        MR == "no"
+    if raw_text3 == 'Co':
+        MR = credit
     else:
         MR = raw_text3
   
