@@ -11,7 +11,9 @@ from pyrogram.types import Message
 from pyrogram import Client, filters
 from p_bar import progress_bar
 from subprocess import getstatusoutput
+import aiohttp
 from aiohttp import ClientSession
+import aiofiles
 import helper
 from logger import logging
 import time
@@ -156,9 +158,7 @@ async def account_login(bot: Client, m: Message):
                 prog = await m.reply_text(Show)
                 cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}HACKEROP❤️.mkv\n**Batch »** {raw_text0}\n\n'
                 cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} HACKEROP❤️.pdf \n**Batch »** {raw_text0}\n\n'
-                if "pdf" or ".pdf" in url or ".pdf" in name:
-                    cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
-                    download_cmd = f"{cmd} -R 25 --fragment-retries 25"
+                if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
                         ka = await helper.aio(url, name)
                         await prog.delete(True)
