@@ -22,7 +22,7 @@ import re
 import os
 
 bot = Client("bot",
-             bot_token= "6133434192:AAHDkrhW9sgqzLU3ay4o7GRy_yPyDuWJdIc",
+             bot_token= "6318119370:AAHZRO1n-as7qs9CxGztsn78d-pwWpC2r-c",
              api_id= 27495136,
              api_hash= "4ccc4865eec4d8fde7530e71948b3424")
 
@@ -156,7 +156,8 @@ async def account_login(bot: Client, m: Message):
                 prog = await m.reply_text(Show)
                 cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}HACKEROP❤️.mkv\n**Batch »** {raw_text0}\n\n'
                 cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} HACKEROP❤️.pdf \n**Batch »** {raw_text0}\n\n'
-                if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
+                if "pdf" or ".pdf" in url or ".pdf" in name:
+                    cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
                     try:
                         ka = await helper.aio(url, name)
                         await prog.delete(True)
