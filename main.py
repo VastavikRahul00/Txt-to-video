@@ -158,6 +158,7 @@ async def account_login(bot: Client, m: Message):
                 cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} HACKEROP❤️.pdf \n**Batch »** {raw_text0}\n\n'
                 if "pdf" or ".pdf" in url or ".pdf" in name:
                     cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
+                    download_cmd = f"{cmd} -R 25 --fragment-retries 25"
                     try:
                         ka = await helper.aio(url, name)
                         await prog.delete(True)
