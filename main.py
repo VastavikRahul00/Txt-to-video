@@ -77,7 +77,15 @@ async def account_login(bot: Client, m: Message):
     raw_text0 = input1.text
     await input1.delete(True)
     
-
+    await editable.edit("**enter a highliter**")
+    input3: Message = await bot.listen(editable.chat.id)
+    raw_text3 = input3.text
+    await input3.delete(True)
+    if raw_text3 == 'co':
+        MR = credit
+    else:
+        MR = raw_text3
+  
     await editable.edit("**Enter resolution**")
     input2: Message = await bot.listen(editable.chat.id)
     raw_text2 = input2.text
@@ -158,8 +166,8 @@ async def account_login(bot: Client, m: Message):
             
             try:  
                 
-                cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}HACKEROP❤️.mkv\n**Batch »** {raw_text0}\n\n'
-                cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} HACKEROP❤️.pdf \n**Batch »** {raw_text0}\n\n'
+                cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}{MR}.mkv\n**Batch »** {raw_text0}\n\n'
+                cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} {MR}.pdf \n**Batch »** {raw_text0}\n\n'
                 if ".pdf" in url:
                     try:
                         cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
