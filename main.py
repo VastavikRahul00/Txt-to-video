@@ -47,7 +47,7 @@ async def account_login(bot: Client, m: Message):
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
-    highlighter  == "no"
+    
 
 
 
@@ -83,6 +83,7 @@ async def account_login(bot: Client, m: Message):
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
+    highlighter  == "no"
     if raw_text3 == 'Co':
         MR = highlighter 
     else:
