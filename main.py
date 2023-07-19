@@ -152,6 +152,8 @@ async def account_login(bot: Client, m: Message):
                 cmd = f'yt-dlp -o "{name}.mp4" "{url}"'
             else:
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
+            if "kdcampus" or "streamlock" in url:
+                cmd=f'yt-dlp -o "{name}.mp4" "{url}"'
             
             
             try:  
@@ -174,6 +176,7 @@ async def account_login(bot: Client, m: Message):
                 else:
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
+                    await prog.delete(True)
                     await helper.send_vid(bot, m, cc, filename, thumb, name, prog)
                     count += 1
                     time.sleep(1)
