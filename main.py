@@ -153,35 +153,20 @@ async def account_login(bot: Client, m: Message):
             else:
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
             
-            if ".pdf" in url: #and raw_text2 in ["144", "240", "360", "480", "720", "no"]:
-                cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
-
+            
             try:  
                 Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
                 prog = await m.reply_text(Show)
                 cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}HACKEROP❤️.mkv\n**Batch »** {raw_text0}\n\n'
                 cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} HACKEROP❤️.pdf \n**Batch »** {raw_text0}\n\n'
-                if "pdf" or ".pdf" in url or ".pdf" in name:
-                    cmd2=f'yt-dlp -o "{name}.pdf"'
-                    download_cmd2 = f"{cmd2} -R 25 --fragment-retries 25 --external-downloader aria2c --downloader-args 'aria2c: -x 16 -j 32'"
+                if ".pdf" in url:
                     try:
-                        ka = await helper.aio(url, name)
-                        await prog.delete(True)
-                        time.sleep(1)
-                        reply = await m.reply_text(f"Uploading - ```{name}```")
-                        time.sleep(1)
-                        start_time = time.time()
-                        await m.reply_document(
-                            ka,
-                            caption=
-             f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1}HACKEROP❤️.pdf \n**Batch »** {raw_text0}\n\n'
-                        )
+                        cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
+                        download_cmd = f"{cmd} -R 25 --fragment-retries 25"
+                        os.system(download_cmd)
+                        copy = await bot.send_document(document=f'{name}.pdf', caption=cc1)
                         count += 1
-                        # time.sleep(1)
-                        await reply.delete(True)
-                        time.sleep(1)
-                        os.remove(ka)
-                        time.sleep(3)
+                        os.remove(f'{name}.pdf')
                     except FloodWait as e:
                         await m.reply_text(str(e))
                         time.sleep(e.x)
