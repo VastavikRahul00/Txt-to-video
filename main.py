@@ -157,8 +157,7 @@ async def account_login(bot: Client, m: Message):
             
             
             try:  
-                Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
-                prog = await m.reply_text(Show)
+                
                 cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}HACKEROP❤️.mkv\n**Batch »** {raw_text0}\n\n'
                 cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} HACKEROP❤️.pdf \n**Batch »** {raw_text0}\n\n'
                 if ".pdf" in url:
@@ -174,6 +173,8 @@ async def account_login(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
+                    Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
+                    prog = await m.reply_text(Show)
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
                     await prog.delete(True)
