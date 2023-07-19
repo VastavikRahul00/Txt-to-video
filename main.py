@@ -77,12 +77,12 @@ async def account_login(bot: Client, m: Message):
     raw_text0 = input1.text
     await input1.delete(True)
     
-    await editable.edit("**enter a highliter**")
+    await editable.edit("**Enter A Highliter**")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
-    if raw_text3 == 'co':
-        MR = credit
+    if raw_text3 == 'no':
+        MR == "no"
     else:
         MR = raw_text3
   
