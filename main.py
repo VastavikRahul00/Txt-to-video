@@ -79,7 +79,7 @@ async def account_login(bot: Client, m: Message):
     raw_text0 = input1.text
     await input1.delete(True)
     
-    await editable.edit("**Enter A Highlighter**")
+    await editable.edit("**Enter A Highlighter Otherwise send 👉Co👈 **")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
@@ -169,7 +169,7 @@ async def account_login(bot: Client, m: Message):
             
             try:  
                 
-                cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}{MR}.mkv\n**Batch »** {raw_text0}\n\n'
+                cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res} {MR}.mkv\n**Batch »** {raw_text0}\n\n'
                 cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} {MR}.pdf \n**Batch »** {raw_text0}\n\n'
                 if ".pdf" in url:
                     try:
