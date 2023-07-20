@@ -21,12 +21,17 @@ import sys
 import re
 import os
 
-bot = Client("bot",
-             bot_token= "6133434192:AAHDkrhW9sgqzLU3ay4o7GRy_yPyDuWJdIc",
-             api_id= 27495136,
-             api_hash= "4ccc4865eec4d8fde7530e71948b3424",
-             AUTH_USERS = 5148038477,5587431966,810759821,
-             sudo_users = [5148038477,5587431966,810759821])
+API_ID = 23442389
+API_HASH = "70490ec8a810932cb5cb7f9d6a839ee0"
+BOT_TOKEN = "5977243533:AAH0Fbk_s09xcGi7O_ACJO1dVKrwTbYFWlk"
+AUTH_USERS = 5148038477,5587431966,810759821
+sudo_users = [5148038477,5587431966,810759821]
+bot = Client(
+    "bot",
+    bot_token=BOT_TOKEN,
+    api_id=API_ID,
+    api_hash=API_HASH
+)
 
 
 @bot.on_message(filters.command(["start"]))
