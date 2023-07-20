@@ -24,8 +24,8 @@ import os
 bot = Client("bot",
              bot_token= "6133434192:AAHDkrhW9sgqzLU3ay4o7GRy_yPyDuWJdIc",
              api_id= 27495136,
-             api_hash= "4ccc4865eec4d8fde7530e71948b3424"
-             AUTH_USERS = 5148038477,5587431966,810759821
+             api_hash= "4ccc4865eec4d8fde7530e71948b3424",
+             AUTH_USERS = 5148038477,5587431966,810759821,
              sudo_users = [5148038477,5587431966,810759821])
 
 
