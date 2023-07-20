@@ -176,7 +176,7 @@ async def account_login(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 
-                 elif ".pdf" in url:
+                elif ".pdf" in url:
                     try:
                         cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
                         download_cmd = f"{cmd} -R 25 --fragment-retries 25"
