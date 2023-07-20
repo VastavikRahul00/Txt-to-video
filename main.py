@@ -100,6 +100,16 @@ async def account_login(bot: Client, m: Message):
     
     
 
+    await editable.edit("**Enter A Highlighter Otherwise send 👉Co👈 **")
+    input3: Message = await bot.listen(editable.chat.id)
+    raw_text3 = input3.text
+    await input3.delete(True)
+    highlighter  = f"️ ⁪⁬⁮⁮⁮"
+    if raw_text3 == 'Co':
+        MR = highlighter 
+    else:
+        MR = raw_text3
+   
     await editable.edit("Now send the **Thumb url**\nEg : ```https://telegra.ph/file/0633f8b6a6f110d34f044.jpg```\n\nor Send `no`")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
@@ -153,8 +163,8 @@ async def account_login(bot: Client, m: Message):
             try:  
                 Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
                 prog = await m.reply_text(Show)
-                cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res}🇨‌ 🇴‌ 🇻 🇮 🇩.mkv\n**Batch »** {raw_text0}\n\n'
-                cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} 🇨‌ 🇴‌ 🇻 🇮 🇩.pdf \n**Batch »** {raw_text0}\n\n'
+                cc = f'**Vid_id  »** {str(count).zfill(3)}\n**Title  »** {name1} {res} {MR}.mkv\n**Batch »** {raw_text0}\n\n'
+                cc1 = f'**Vid_id  »** {str(count).zfill(3)}\n**Title »** {name1} {MR}.pdf \n**Batch »** {raw_text0}\n\n'
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
                         ka = await helper.aio(url, name)
