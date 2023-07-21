@@ -29,6 +29,7 @@ import requests
 import time
 from p_bar import progress_bar
 import aiohttp
+import aiofiles
 import tgcrypto
 import concurrent.futures
 import subprocess
